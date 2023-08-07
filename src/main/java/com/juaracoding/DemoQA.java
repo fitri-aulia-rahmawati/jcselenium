@@ -17,12 +17,23 @@ public class DemoQA {
 //        driver.manage()window().fullscree();
         System.out.println("Open Browser, Open URL");
 
+        String titlePage = driver.findElement(By.className("main-header")).getText();
+        System.out.println(titlePage);
+        String titleHeader = driver.getTitle();
+        System.out.println(titleHeader);
         driver.findElement(By.id("userName")).sendKeys("JuaraCoding");
         driver.findElement(By.id("userEmail")).sendKeys("info@juaracoding.com");
         driver.findElement(By.id("currentAddress")).sendKeys("Jakarta");
         driver.findElement(By.id("permanentAddress")).sendKeys("Jakarta");
         js.executeScript("window.scrollBy(0,500)");
         driver.findElement(By.id("submit")).click();
+
+        // Buat Assert menggunakan if
+        if(titlePage.equalsIgnoreCase("Text Box")){
+            System.out.println("Result Testing Pass");
+        } else {
+            System.out.println("Result ");
+        }
 
         delay();
         driver.quit();
